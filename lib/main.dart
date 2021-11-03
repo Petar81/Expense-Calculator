@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import './transaction.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -22,13 +24,13 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Expense planner'),
+      home: MyHomePage(title: 'Expense planner'),
     );
   }
 }
 
 class MyHomePage extends StatelessWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
+  MyHomePage({Key? key, required this.title}) : super(key: key);
 
   // This class is the configuration - It holds the values (in this
   // case the title) provided by the parent (in this case the App widget) and
@@ -36,6 +38,12 @@ class MyHomePage extends StatelessWidget {
   // always marked "final".
 
   final String title;
+  final List<Transaction> transactions = [
+    Transaction(
+        id: 't1', title: 'New Shoes', amount: 69.99, date: DateTime.now()),
+    Transaction(
+        id: 't2', title: 'Groceries', amount: 109.99, date: DateTime.now()),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -55,8 +63,10 @@ class MyHomePage extends StatelessWidget {
               child: Text('CHART!'),
             ),
           ),
-          const Card(
-            child: Text('LIST of TRX'),
+          Column(
+            children: transactions.map((tx) {
+              return Card(child: Text(tx.title));
+            }).toList(),
           ),
         ],
         // Center is a layout widget. It takes a single child and positions it
