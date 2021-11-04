@@ -92,7 +92,7 @@ class MyHomePage extends StatelessWidget {
                             fontSize: 18, fontWeight: FontWeight.bold),
                       ),
                       Text(
-                        DateFormat('ar').format(tx.date),
+                        DateFormat().format(tx.date),
                         style: const TextStyle(color: Colors.grey),
                       )
                     ],
