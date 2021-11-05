@@ -51,21 +51,23 @@ class MyHomePage extends StatelessWidget {
         // the App.build method, and use it to set our appbar title.
         title: Text(title),
       ),
-      body: Column(
-        // mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          // ignore: sized_box_for_whitespace
-          Container(
-            width: double.infinity,
-            child: const Card(
-              child: Text('CHART!'),
+      body: SingleChildScrollView(
+        child: Column(
+          // mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            // ignore: sized_box_for_whitespace
+            Container(
+              width: double.infinity,
+              child: const Card(
+                child: Text('CHART!'),
+              ),
             ),
-          ),
-          UserTransactions()
-        ],
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
+            const UserTransactions()
+          ],
+          // Center is a layout widget. It takes a single child and positions it
+          // in the middle of the parent.
+        ),
       ),
     );
   }
