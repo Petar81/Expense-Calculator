@@ -50,6 +50,13 @@ class MyHomePage extends StatelessWidget {
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(title),
+        actions: <Widget>[
+          IconButton(
+              onPressed: () {
+                print('object');
+              },
+              icon: const Icon(Icons.add)),
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -68,6 +75,11 @@ class MyHomePage extends StatelessWidget {
           // Center is a layout widget. It takes a single child and positions it
           // in the middle of the parent.
         ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.add),
+        onPressed: () {},
       ),
     );
   }
