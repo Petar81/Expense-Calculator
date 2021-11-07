@@ -1,6 +1,11 @@
+import 'package:expense_planner/widgets/new_transaction.dart';
+import 'package:expense_planner/widgets/transaction_list.dart';
 import 'package:flutter/material.dart';
 
-import './widgets/user_transactions.dart';
+import './models/transaction.dart';
+
+import './widgets/transaction_list.dart';
+import './widgets/new_transaction.dart';
 
 void main() {
   runApp(const MyApp());
@@ -29,7 +34,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
   MyHomePage({Key? key, required this.title}) : super(key: key);
 
   // This class is the configuration - It holds the values (in this
@@ -38,10 +43,38 @@ class MyHomePage extends StatelessWidget {
   // always marked "final".
 
   final String title;
-  // late String titleInput;
-  // late String amountInput;
-  final titleController = TextEditingController();
-  final amountController = TextEditingController();
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  final List<Transaction> _userTransactions = [
+    Transaction(
+        id: 't1', title: 'New Shoes', amount: 69.99, date: DateTime.now()),
+    Transaction(
+        id: 't2', title: 'Groceries', amount: 109.99, date: DateTime.now()),
+  ];
+
+  void _addNewTransaction(String txTitle, double txAmount) {
+    final newTx = Transaction(
+        id: DateTime.now().toString(),
+        title: txTitle,
+        amount: txAmount,
+        date: DateTime.now());
+
+    setState(() {
+      _userTransactions.add(newTx);
+    });
+  }
+
+  void _startAddNewTransaction(BuildContext ctx) {
+    showModalBottomSheet(
+        context: ctx,
+        builder: (_) {
+          return NewTransaction(_addNewTransaction);
+        });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,11 +82,11 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: Text(title),
+        title: Text(widget.title),
         actions: <Widget>[
           IconButton(
               onPressed: () {
-                print('object');
+                _startAddNewTransaction(context);
               },
               icon: const Icon(Icons.add)),
         ],
@@ -70,7 +103,7 @@ class MyHomePage extends StatelessWidget {
                 child: Text('CHART!'),
               ),
             ),
-            const UserTransactions()
+            TransactionList(_userTransactions),
           ],
           // Center is a layout widget. It takes a single child and positions it
           // in the middle of the parent.
@@ -79,7 +112,7 @@ class MyHomePage extends StatelessWidget {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
-        onPressed: () {},
+        onPressed: () => _startAddNewTransaction(context),
       ),
     );
   }
