@@ -28,6 +28,7 @@ class MyApp extends StatelessWidget {
         // "hot reload" (press "r" in the console where you ran "flutter run",
         // or simply save your changes to "hot reload" in a Flutter IDE).
         primarySwatch: Colors.blue,
+        fontFamily: 'QuickSand',
       ),
       home: MyHomePage(title: 'Expense planner'),
     );
@@ -50,10 +51,10 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final List<Transaction> _userTransactions = [
-    Transaction(
-        id: 't1', title: 'New Shoes', amount: 69.99, date: DateTime.now()),
-    Transaction(
-        id: 't2', title: 'Groceries', amount: 109.99, date: DateTime.now()),
+    // Transaction(
+    //     id: 't1', title: 'New Shoes', amount: 69.99, date: DateTime.now()),
+    // Transaction(
+    //     id: 't2', title: 'Groceries', amount: 109.99, date: DateTime.now()),
   ];
 
   void _addNewTransaction(String txTitle, double txAmount) {
