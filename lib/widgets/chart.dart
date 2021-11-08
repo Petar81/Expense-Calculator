@@ -42,18 +42,25 @@ class Chart extends StatelessWidget {
     return Card(
       elevation: 6,
       margin: const EdgeInsets.all(20),
-      child: Row(
-        children: groupedTransactionValues.map((data) {
-          var spendingAmount = 0.0;
-          if (recentTransactions.isNotEmpty) {
-            spendingAmount = (data['amount'] as double) / totalSpending;
-          }
-          return ChartBar(
-            data['day'] as String,
-            data['amount'] as double,
-            spendingAmount == 0.0 ? 0.0 : spendingAmount,
-          );
-        }).toList(),
+      child: Padding(
+        padding: const EdgeInsets.all(10),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: groupedTransactionValues.map((data) {
+            var spendingAmount = 0.0;
+            if (recentTransactions.isNotEmpty) {
+              spendingAmount = (data['amount'] as double) / totalSpending;
+            }
+            return Flexible(
+              fit: FlexFit.tight,
+              child: ChartBar(
+                data['day'] as String,
+                data['amount'] as double,
+                spendingAmount == 0.0 ? 0.0 : spendingAmount,
+              ),
+            );
+          }).toList(),
+        ),
       ),
     );
   }
