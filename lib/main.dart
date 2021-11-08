@@ -31,13 +31,13 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         fontFamily: 'QuickSand',
       ),
-      home: MyHomePage(title: 'Expense planner'),
+      home: const MyHomePage(title: 'Expense planner'),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, required this.title}) : super(key: key);
+  const MyHomePage({Key? key, required this.title}) : super(key: key);
 
   // This class is the configuration - It holds the values (in this
   // case the title) provided by the parent (in this case the App widget) and
