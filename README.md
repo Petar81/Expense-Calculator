@@ -1,5 +1,5 @@
-# Expense Planner
+# Expense Calculator
 
-Calculate your weekly budget and expenses with this app.
+Calculate your weekly expenses with this app.
 
 
