@@ -30,6 +30,7 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         primarySwatch: Colors.blue,
         fontFamily: 'QuickSand',
+        errorColor: Colors.orange[600],
       ),
       home: const MyHomePage(title: 'Expense planner'),
     );
@@ -90,6 +91,12 @@ class _MyHomePageState extends State<MyHomePage> {
         });
   }
 
+  void _deleteTransaction(String id) {
+    setState(() {
+      _userTransactions.removeWhere((tx) => tx.id == id);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -112,7 +119,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             // ignore: sized_box_for_whitespace
             Chart(_recentTransactions),
-            TransactionList(_userTransactions),
+            TransactionList(_userTransactions, _deleteTransaction),
           ],
           // Center is a layout widget. It takes a single child and positions it
           // in the middle of the parent.
