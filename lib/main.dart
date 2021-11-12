@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Expense planner',
+      title: 'Expense calculator',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'QuickSand',
         errorColor: Colors.orange[600],
       ),
-      home: const MyHomePage(title: 'Expense planner'),
+      home: const MyHomePage(title: 'Expense calculator'),
     );
   }
 }
@@ -124,14 +124,14 @@ class _MyHomePageState extends State<MyHomePage> {
               height: (MediaQuery.of(context).size.height -
                       appBar.preferredSize.height -
                       MediaQuery.of(context).padding.top) *
-                  0.4,
+                  0.3,
               child: Chart(_recentTransactions),
             ),
             SizedBox(
                 height: (MediaQuery.of(context).size.height -
                         appBar.preferredSize.height -
                         MediaQuery.of(context).padding.top) *
-                    0.6,
+                    0.7,
                 child: TransactionList(_userTransactions, _deleteTransaction)),
           ],
           // Center is a layout widget. It takes a single child and positions it
