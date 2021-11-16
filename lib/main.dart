@@ -153,7 +153,13 @@ class _MyHomePageState extends State<MyHomePage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  const Text('Show chart'),
+                  const Text(
+                    'Show chart',
+                    style: TextStyle(
+                        fontFamily: 'OpenSans',
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold),
+                  ),
                   Switch.adaptive(
                       value: _showChart,
                       onChanged: (val) {
