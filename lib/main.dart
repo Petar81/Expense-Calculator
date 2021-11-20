@@ -57,13 +57,30 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
   final List<Transaction> _userTransactions = [
     // Transaction(
     //     id: 't1', title: 'New Shoes', amount: 69.99, date: DateTime.now()),
     // Transaction(
     //     id: 't2', title: 'Groceries', amount: 109.99, date: DateTime.now()),
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance!.addObserver(this);
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    print(state);
+  }
+
+  @override
+  dispose() {
+    super.dispose();
+    WidgetsBinding.instance!.removeObserver(this);
+  }
 
   bool _showChart = false;
 
