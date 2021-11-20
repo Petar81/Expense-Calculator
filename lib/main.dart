@@ -65,22 +65,22 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
     //     id: 't2', title: 'Groceries', amount: 109.99, date: DateTime.now()),
   ];
 
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance!.addObserver(this);
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   WidgetsBinding.instance!.addObserver(this);
+  // }
 
-  @override
-  void didChangeAppLifecycleState(AppLifecycleState state) {
-    print(state);
-  }
+  // @override
+  // void didChangeAppLifecycleState(AppLifecycleState state) {
+  //   print(state);
+  // }
 
-  @override
-  dispose() {
-    super.dispose();
-    WidgetsBinding.instance!.removeObserver(this);
-  }
+  // @override
+  // dispose() {
+  //   super.dispose();
+  //   WidgetsBinding.instance!.removeObserver(this);
+  // }
 
   bool _showChart = false;
 
